@@ -10,7 +10,7 @@ int main()
 
     cout << "Enter a message: ";
     getline(cin, message);
-
+    // Store the Morse code for each character
     string morse[] = {
         ".--", "-...", "-.-.", "-..", ".", "..-.",
         "--.", "....", "..", ".---", "-.-", ".-..",
