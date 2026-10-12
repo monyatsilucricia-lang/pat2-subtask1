@@ -26,6 +26,7 @@ int main()
         if (ch >= 'A' && ch <= 'Z')
         {
             int index = ch - 'A';
+            // Display the translated Morse code
 
             cout << ch << ": " << morse[index] << endl;
         }
