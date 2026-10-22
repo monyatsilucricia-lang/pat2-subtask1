@@ -1,38 +1,77 @@
 #include <iostream>
 #include <string>
-#include <cctype>
-
 using namespace std;
+
+// Function 1: Decimal to Binary
+string decimalToBinary(int decimal)
+{
+    if (decimal == 0)
+        return "0";
+
+    string binary = "";
+
+    while (decimal > 0)
+    {
+        binary = char((decimal % 2) + '0') + binary;
+        decimal = decimal / 2;
+    }
+
+    return binary;
+}
+
+// Function 2: Binary to Decimal
+int binaryToDecimal(string binary)
+{
+    int decimal = 0;
+
+    for (char digit : binary)
+    {
+        decimal = decimal * 2 + (digit - '0');
+    }
+
+    return decimal;
+}
+
+// Function 3: Decimal to Hexadecimal
+string decimalToHexadecimal(int decimal)
+{
+    if (decimal == 0)
+        return "0";
+
+    string hexadecimal = "";
+    string digits = "0123456789ABCDEF";
+
+    while (decimal > 0)
+    {
+        hexadecimal = digits[decimal % 16] + hexadecimal;
+        decimal = decimal / 16;
+    }
+
+    return hexadecimal;
+}
 
 int main()
 {
-    string message;
+    int number;
+    string binary;
 
-    cout << "Enter a message: ";
-    getline(cin, message);
-    // Store the Morse code for each character
-    string morse[] = {
-        ".--", "-...", "-.-.", "-..", ".", "..-.",
-        "--.", "....", "..", ".---", "-.-", ".-..",
-        "--", "-.", "---", ".--.", "--.-", ".-.",
-        "...", "-", "..-", "...-", ".--", "-..-",
-        "-.--", "--.."
-    };
+    cout << "Enter a decimal number: ";
+    cin >> number;
 
-    for (char ch : message)
-    {
-        ch = toupper(ch);
+    cout << "Binary: "
+         << decimalToBinary(number) << endl;
 
-        if (ch >= 'A' && ch <= 'Z')
-        {
-            int index = ch - 'A';
-            // Display the translated Morse code
+    cout << "Enter a binary number: ";
+    cin >> binary;
 
-            cout << ch << ": " << morse[index] << endl;
-        }
-    }
+    cout << "Decimal: "
+         << binaryToDecimal(binary) << endl;
+
+    cout << "Enter another decimal number: ";
+    cin >> number;
+
+    cout << "Hexadecimal: "
+         << decimalToHexadecimal(number) << endl;
 
     return 0;
-}//
-// Created by B5 Student on 10/12/2026.
-//
+}
